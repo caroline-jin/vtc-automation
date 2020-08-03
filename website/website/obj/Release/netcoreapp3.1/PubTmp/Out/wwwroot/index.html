@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Automation Tool</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>Teams Video Conferencing Automation Tool</h1>
+    <h3>Options:</h3>
+    <div id="text">
+        <p>
+            1: Send audio call,
+            2: Pick up call,
+            3: Take screenshot,
+            4: Send file,
+            5: Share screen,
+            6: Quit program
+        </p>
+    </div>
+    <div style="display:none" id="calltext">
+        <p>
+            You are in a call:<br />
+            1: Play recording,
+            2: Toggle camera,
+            3: Toggle mic,
+            4: Stop share screen,
+            5: Add person,
+            6: Screenshot,
+            7: Send file,
+            8: Hang up,
+            9: Return to previous options
+        </p>
+    </div>
+    <div style="display:none" id="recordingText">
+        <p>
+            Choose from the following options for the audio player<br />
+            1: Play recording,
+            2: Pause recording,
+            3: Next recording,
+            4: Previous recording,
+            5: Volume up,
+            6: Volume down
+        </p>
+    </div>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <div id="outofcall">
+            <!--<input type="text" id="add-name" placeholder="Enter item">-->
+            <select id="options" onchange="CheckValue(this.value)">
+                <option value="default" selected>Pick an option</option>
+                <option value="1">Send audio call</option>
+                <option value="2">Pick up call</option>
+                <option value="3">Take screenshot</option>
+                <option value="4">Send file</option>
+                <option value="5">Share screen</option>
+                <option value="6">Exit program</option>
+            </select><br />
+            <div style="display:none" id="optionOne">
+                Name: <input type="text" id="caller" /> <br />
+            </div>
+            <div style="display:none" id="optionFour">
+                File name: <input type="text" id="file" /> <br />
+            </div>
+            <div style="display:none" id="uniqueid">
+                Pin: <input type="text" id="identifier" /><br />
+            </div>
+            <div id="submitbutton" style="display:none">
+                <input type="submit" value="Send">
+            </div>
+        </div>
+    </form>
+    <form action="javascript:void(0);" method="POST" onsubmit="addCallItem()">
+        <div style="display:none" id="inCall">
+            <select id="callOptions" onchange="CheckValue2(this.value)">
+                <option value="default" selected>You are in a call</option>"
+                <option value="1">Play recording</option>
+                <option value="2">Turn on/off camera</option>
+                <option value="3">Turn on/off mic</option>
+                <option value="4">Share screen</option>
+                <option value="5">Add person</option>
+                <option value="6">Screenshot</option>
+                <option value="7">Send file</option>
+                <option value="8">Hang up</option>
+                <option value="9">Return (not in a call)</option>
+            </select><br />
+            <div style="display:none" id="recording">
+                Recording: <select id="music" onchange="CheckValue3(this.value)">
+                    <option value="1">Play recording</option>
+                    <option value="2">Pause recording</option>
+                    <option value="3">Next recording</option>
+                    <option value="4">Previous recording</option>
+                    <option value="5">Volume up</option>
+                    <option value="6">Volume down</option>
+                </select><br />
+            </div>
+            <div style="display:none" id="person">
+                Name: <input type="text" id="add_person" /> <br />
+            </div>
+            <div style="display:none" id="sendfile2">
+                File Name: <input type="text" id="file2" /> <br />
+            </div>
+            <div style="display:none" id="uniqueid2">
+                Pin: <input type="text" id="identifier2" /><br />
+            </div>
+            <div id="submitbutton2" style="display:none">
+                <input type="submit" value="Send">
+            </div>
+        </div>
+    </form>
+
+
+    <!--<div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="checkbox" id="edit-isComplete">
+            <input type="text" id="edit-name">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>-->
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>History</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+    <button onclick="deleteAll(identifier.value)">Clear History</button>
+    <br />
+    <br />
+    <table>
+        <tr>
+            <th>IDs in use:</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="inuse"></tbody>
+    </table>
+
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To-do CRUD</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>To-do CRUD</h1>
+    <h3>Add</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="text" id="add-name" placeholder="New to-do">
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="checkbox" id="edit-isComplete">
+            <input type="text" id="edit-name">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>Is Complete?</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
+</body>
+</html>-->
