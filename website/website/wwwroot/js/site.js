@@ -156,8 +156,13 @@ function addItem() {
     }
     //const addNameTextbox = document.getElementById('add-name');
 
+    var today = new Date();
+    var date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + ' ' + time;
+
     const item = {
-        isComplete: false,
+        history: dateTime,
         // id: choice.value,
         extra: info,
         name: choice.value,
@@ -217,8 +222,13 @@ function addCallItem() {
         info = "";
     }
 
+    var today2 = new Date();
+    var date2 = today2.getFullYear() + '/' + (today2.getMonth() + 1) + '/' + today2.getDate();
+    var time2 = today2.getHours() + ":" + today2.getMinutes() + ":" + today2.getSeconds();
+    var dateTime2 = date2 + ' ' + time2;
+
     const item = {
-        isComplete: false,
+        history: dateTime2,
         // id: choice.value,
         extra: info,
         name: choice2.value,
@@ -355,17 +365,24 @@ function _displayItems(data) {
             td4.appendChild(deleteButton);
         }
 
-
-        var flag = false;
-        for (i = 0; i < ids.length; i++) {
-            if (item.unique_id == ids[i]) {
-                flag = true;
-                break;
+        var diff = Math.abs(new Date() - new Date(item.history));
+        // alert(item.id + diff);
+        if (diff > 120000) {
+            deleteItem(item.id);
+        }
+        else {
+            var flag = false;
+            for (i = 0; i < ids.length; i++) {
+                if (item.unique_id == ids[i]) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                ids.push(item.unique_id);
             }
         }
-        if (!flag) {
-            ids.push(item.unique_id);           
-        }
+
 
 
     });

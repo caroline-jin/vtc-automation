@@ -149,3 +149,4 @@ C:\Users\t-cajin\source\repos\website\website\obj\Release\netcoreapp3.1\staticwe
 C:\Users\t-cajin\source\repos\website\website\obj\Release\netcoreapp3.1\website.dll
 C:\Users\t-cajin\source\repos\website\website\obj\Release\netcoreapp3.1\website.pdb
 C:\Users\t-cajin\source\repos\website\website\obj\Release\netcoreapp3.1\website.genruntimeconfig.cache
+C:\Users\t-cajin\source\repos\website\website\bin\Release\netcoreapp3.1\Properties\serviceDependencies.local.json
