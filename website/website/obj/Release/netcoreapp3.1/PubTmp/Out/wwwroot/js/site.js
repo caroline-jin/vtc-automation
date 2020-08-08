@@ -136,17 +136,6 @@ function addItem() {
         document.getElementById("identifier2").value = unique_identifier;
     }
     else if (choice.value == "4") {
-        info = file;
-    }
-    else if (choice.value == "5") {
-        first_section.style.display = 'none';
-        call_choice.style.display = 'block';
-        text.style.display = 'none';
-        calltext.style.display = 'block';
-        document.getElementById("identifier2").value = unique_identifier;
-        info = "";
-    }
-    else if (choice.value == "6") {
         info = "";
         counter = 0;
       //  deleteAll(unique_identifier);
@@ -367,7 +356,7 @@ function _displayItems(data) {
 
         var diff = Math.abs(new Date() - new Date(item.history));
         // alert(item.id + diff);
-        if (diff > 120000) {
+        if (diff > 259200000) {
             deleteItem(item.id);
         }
         else {
