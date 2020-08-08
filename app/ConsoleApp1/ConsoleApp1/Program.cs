@@ -201,7 +201,15 @@ namespace ConsoleApp1
 
         void HangUp()
         {
-            call_session.FindElementByName("Leave (Ctrl+Shift+B)").Click();
+            try
+            {
+                call_session.FindElementByName("Leave (Ctrl+Shift+B)").Click();
+            }
+            catch
+            {
+                SendKeys.SendWait("^+B");
+            }
+
             // SendKeys.SendWait("^+b");
             // Console.ReadLine();
             Console.WriteLine("Call ended by tool");
@@ -940,6 +948,7 @@ namespace ConsoleApp1
             string choice;
             int counter = 0;
             string identifier;
+            string port; 
 
             Console.WriteLine("What are the dimensions of your screen?");
             Console.Write("Width: ");
@@ -950,17 +959,22 @@ namespace ConsoleApp1
             Console.WriteLine("What is the unique ID?");
             identifier = Console.ReadLine();
 
+            Console.WriteLine("What is the Bluetooth port?");
+            port = Console.ReadLine();
+
+
             serialPort = new SerialPort();
             try
             {
-                serialPort.PortName = "COM4";
+                serialPort.PortName = port; 
                 serialPort.BaudRate = 9600;
             }
             catch
             {
                 Console.WriteLine("Check your bluetooth.");
             }
-            
+
+
 
             string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string strWorkPath = System.IO.Path.GetDirectoryName(strExeFilePath);
@@ -986,6 +1000,18 @@ namespace ConsoleApp1
                     file.WriteLine(text);
                 }
             }
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = @"powershell.exe";
+            startInfo.Arguments = strWorkPath + @"\taskscheduler.ps1";
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = false;
+            Process process = new Process(); 
+            process.StartInfo = startInfo;
+            process.Start();
+
             //open teams
             while (exit)
             {
@@ -1094,7 +1120,7 @@ namespace ConsoleApp1
                             myclass.SendScreenshot(filename, strWorkPath, logfile);
                             count++;
                             break;
-                        case "4":
+                     /*   case "4":
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(logfile, true))
                             {
                                 file.WriteLine("Option 4 received");
@@ -1113,8 +1139,8 @@ namespace ConsoleApp1
                             myclass.ShareScreen();
                             sharescreen = true;
                             in_call = true;
-                            break;
-                        case "6":
+                            break;*/
+                        case "4":
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(logfile, true))
                             {
                                 file.WriteLine("Option 6 received");
@@ -1378,6 +1404,16 @@ namespace ConsoleApp1
                 file.WriteLine(DateTime.Now.ToString("h:mm:ss tt")+"Exiting the program success\n");
             }
 
+            ProcessStartInfo startInfo2 = new ProcessStartInfo();
+            startInfo2.FileName = @"powershell.exe";
+            startInfo2.Arguments = strWorkPath + @"\unschedule.ps1";
+            startInfo2.RedirectStandardOutput = true;
+            startInfo2.RedirectStandardError = true;
+            startInfo2.UseShellExecute = false;
+            startInfo2.CreateNoWindow = false;
+            Process process2 = new Process();
+            process2.StartInfo = startInfo;
+            process2.Start();
 
         }
 
