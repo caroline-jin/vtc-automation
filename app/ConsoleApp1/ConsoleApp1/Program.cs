@@ -1023,11 +1023,11 @@ namespace ConsoleApp1
                         myclass.startSession(logfile);
                     }
                     Console.WriteLine("You are not in a call. What would you like to do?");
-                    Console.WriteLine("1)Place an audio call 2)Pick up an incoming call 3)Screenshot 4)Send file 5)Share screen 6)Exit");
+                    Console.WriteLine("1)Place an audio call 2)Pick up an incoming call 3)Screenshot 4)Exit");
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(logfile, true))
                     {
                         file.WriteLine("You are not in a call. What would you like to do?");
-                        file.WriteLine("1)Place an audio call 2)Pick up an incoming call 3)Screenshot 4)Send file 5)Share screen 6)Exit");
+                        file.WriteLine("1)Place an audio call 2)Pick up an incoming call 3)Screenshot 4)Exit");
                     }
                     item = myclass.downloadJSONdata("https://automationtest2.azurewebsites.net/api/Items");
                     command = false;
@@ -1143,7 +1143,7 @@ namespace ConsoleApp1
                         case "4":
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(logfile, true))
                             {
-                                file.WriteLine("Option 6 received");
+                                file.WriteLine("Option 4 received");
                             }
                             if (!winappdriver.WaitForExit(5000))
                             {
@@ -1242,7 +1242,7 @@ namespace ConsoleApp1
                                     serialPort.Write("-");
                                 }
                             }
-                            serialPort.Close();
+                          //  serialPort.Close();
                             break;
                         case "2":
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(logfile, true))

@@ -8,7 +8,7 @@ function CheckValue(val1) {
 
     //val = document.getElementById("options").value;
     var namebox = document.getElementById("optionOne");
-    var file = document.getElementById("optionFour");
+  //  var file = document.getElementById("optionFour");
     var unique = document.getElementById("uniqueid");
 
     var add = document.getElementById("submitbutton");
@@ -25,13 +25,6 @@ function CheckValue(val1) {
         namebox.style.display = 'block';
         file.style.display = 'none';
         unique.style.display = 'block';
-        add.style.display = 'block';
-    }
-    else if (val1 == "4") {
-        document.getElementById("file").value = "";
-        namebox.style.display = 'none';
-        unique.style.display = 'block';
-        file.style.display = 'block';
         add.style.display = 'block';
     }
     else {
