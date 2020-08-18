@@ -50,9 +50,9 @@ The website is connected to a cloud-based SQL database on the same Azure account
 The required connection string is: <br>
 
     "ConnectionStrings": {
-        "ContextDB": "Server=tcp:websitedb-server1.database.windows.net,1433;Initial Catalog=website_db;Persist Security Info=False;User ID=t-cajin;Password=MicrosoftPassword123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+        "ContextDB": "Server=tcp:websitedb-server1.database.windows.net,1433;Initial Catalog=website_db;Persist Security Info=False;User ID=t-cajin;Password= ;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
     }
-    
+
 The website interacts with the script through JSON packets containing the number of the option chosen (refer to "Current Available Functions" above), the counter, the pin, and the date. <br>
 
 ```[{"id":818,"name":"2","extra":"","count":1,"unique_id":"1234","history":"2020/8/17 22:3:17"}]```<br>
