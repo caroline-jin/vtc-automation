@@ -71,8 +71,10 @@ The Arduino component is necessary for the "Play recording" option, but the rest
 *Materials required:*
 * Arduino Uno
 * HC-05 Bluetooth Module
-* YX5300 Catalex Serial MP3 module
+* YX5300 Catalex Serial MP3 module (+ microSD card)
 * Desk speaker (with audio jack) <br>
+
+The recommended sound files for the microSD card are the Harvard Sentences, but any recording can be used. The mp3 module supports 16 bit audio and up to 48kHz sampling frequency. The file format can be either .mp3 or .wav. 
 
 When connecting the HC-05 Bluetooth Module to the remote machine, the default password is 1234. To find the outgoing Bluetooth port of the HC-05, go to Control Panel and search Bluetooth. Under Devices and Printers, click "Change Bluetooth settings". Click on the tab "COM Ports" and find the outgoing port of the HC-05, ie, COM4 or COM5. 
 
