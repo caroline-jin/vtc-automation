@@ -19,6 +19,7 @@ When not in a call...
 1) Place an outgoing call
 2) Pick up an incoming call
 3) Screenshot
+4) Exit program
 
 When in a call...
 1) Play recording
@@ -29,6 +30,23 @@ When in a call...
 6) Screenshot
 7) Send file
 8) Hang up
+9) Return to previous options
+
+| Function       | Availablilty | Script Description  |
+| :------------- | :----------: | :----------- |
+| 1) Place an outgoing call    | Not in a call   | <ul><li> Search (Ctrl+E) </li><li> Input call recipient name </li><li> Presses {Down} then {Enter} to select first name </li><li> Call (Ctrl + Shift+ U)</li></ul>   |
+| 2) Pick up an incoming call   | Not in a call | <ul><li> Picks up audio call (Ctrl + Shift + S)</li> </ul> |
+| 3) Play recording  | In a call | <ul><li> Opens serial Bluetooth port</li><li>Writes command to serial port based on user choice </li><li>Arduino receives command</li><li> Closes serial port </li></ul> |
+| 4) Toggle mic   | In a call | <ul><li> Toggles mic (Ctrl + Shift + M)</li> </ul> |
+| 5) Toggle camera   | In a call | <ul><li> Toggles video (Ctrl + Shift + O)</li> </ul> |
+| 6) Screen share   | In a call | <ul><li> Opens share tray (Ctrl + Shift + E) </li><li>Selects Desktop {Tab}{Tab}{Enter}</li></ul> |
+| 7) Screenshot  | Not in a call | <ul><li> Takes a screenshot of screen according to screen dimensions </li><li>Selects "Attach files" using WinAppDriver</li><li>Chooses "Upload from computer" with {DOWN}{ENTER}</li><li>Clicks textbox using WinAppDriver and inputs filepath then {ENTER}</li><li>Inputs file name then {ENTER}</li><li>Searches for "This file aready exists" and selects "Replace" with WinAppDriver</li><li>Clicks "Send" with WinAppDriver until uploaded has completed</li></ul> |
+| 8) Screenshot  | In a call | <ul><li> Takes a screenshot of screen according to screen dimensions </li><li>Clicks button to open chat if not open already with WinAppDriver</li><li>Selects "Attach files" using WinAppDriver</li><li>Chooses "Upload from computer" with {DOWN}{ENTER}</li><li>Clicks textbox using WinAppDriver and inputs filepath then {ENTER}</li><li>Inputs file name then {ENTER}</li><li>Searches for "This file aready exists" and selects "Replace" with WinAppDriver</li><li>Clicks "Send" with WinAppDriver until uploaded has completed</li></ul> |
+| 9) Add person   | In a call | <ul><li> Opens people roster using WinAppDriver </li><li>Selects textbook with WinAppDriver</li><li>Presses {Down} then {Enter} to select first name</li></ul> |
+| 10) Send File   | In a call | <ul><li>Clicks button to open chat if not open already with WinAppDriver</li><li>Selects "Attach files" using WinAppDriver</li><li>Chooses "Upload from computer" with {DOWN}{ENTER}</li><li>Clicks textbox using WinAppDriver and inputs filepath then {ENTER}</li><li>Inputs file name then {ENTER}</li><li>Searches for "This file aready exists" and selects "Replace" with WinAppDriver</li><li>Clicks "Send" with WinAppDriver until uploaded has completed</li></ul>  |
+| 11) Hang up   | In a call | <ul><li> Uses WinAppDriver to leave call OR (Ctrl+ Shift +B) as keyboard shortcut sometimes does not work</li> </ul> |
+| 12) Return to previous options  | In a call | <ul><li> Exits call switch statement and returns to not in call options</li> </ul> |
+| 13) Exit program  | Not in a call | <ul><li> Exits polling entire loop </li> <li>Kills WinAppDriver process</li><li>Uses Powershell to unschedule batch file task</li> </ul> |
 
 ## System Breakdown
 ![alt text](https://github.com/caroline-jin/vtc-automation/blob/master/images/chart.PNG "System organization")
