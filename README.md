@@ -108,6 +108,7 @@ To deploy the website on Azure, download the code.
 * Fill out the prompts, making sure to note your username and password if you want to edit your SQL database later on.
 * Click on your newly created database then "Next". Fill out the required data for the connection string and copy the connection string. Click Finish.
 * Finally, click "Publish" and check the url for where the final product is. <br>
+
 For http to https redirection (for use of the SQL database), under "Development Tools," click "Extensions" and add HTTPS Redirect.
 In appsettings.json, there is a section for a connection string "ContextDB," that you can also add your connection string. 
 All future edits of the website code can be published in a similar manner from Visual Studios. 
