@@ -65,7 +65,7 @@ If the website and the script are in different switch statements, the commands w
 
 ### 2. Website Interface
 The website is connected to a cloud-based SQL database on the same Azure account. The SQL database can be accessed through http://automationtest2.azurewebsites.net/api/Items in JSON format or through SQL Management Studio/another SQL database editor by providing the Azure account details. <br>
-The required connection string is: <br>
+Use the connection string provided to connect the website to the database. It should look something like this: <br>
 
     "ConnectionStrings": {
         "ContextDB": "Server=tcp:websitedb-server1.database.windows.net,1433;Initial Catalog=website_db;Persist Security Info=False;User ID=t-cajin;Password= ;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
@@ -95,5 +95,21 @@ The Arduino component is necessary for the "Play recording" option, but the rest
 The recommended sound files for the microSD card are the Harvard Sentences, but any recording can be used. The mp3 module supports 16 bit audio and up to 48kHz sampling frequency. The file format can be either .mp3 or .wav. 
 
 When connecting the HC-05 Bluetooth Module to the remote machine, the default password is 1234. To find the outgoing Bluetooth port of the HC-05, go to Control Panel and search Bluetooth. Under Devices and Printers, click "Change Bluetooth settings". Click on the tab "COM Ports" and find the outgoing port of the HC-05, ie, COM4 or COM5. 
+
+## Deploying the Website
+To deploy the website on Azure, download the code. 
+* Go to https://ms.portal.azure.com/#home. Under App Services, click "Add."
+* Fill out the "Create Web App" form with the appropriate information (Choose ".NET Core 3.1 (LTS)") and create the service.
+* To deploy the code, you can either deploy it from one of their services (OneDrive, Github) under Deployment > Deployment Center, or you can use Visual Studios (you can also create the App Service directly on Visual Studio and skip the first two steps)
+* Open the Visual Studios (make sure its the same account as your Azure account with the app service) and right click the solution > Publish.
+* If the app service does not appear under the Publish option, click "New," and fill out the prompts to find your created service (or create a new one). 
+* Under "Service Dependencies," it will require a SQL database. Click "Configure" > "Azure SQL Database."
+* Click "Create a SQL Database" at the bottom of the window (unless you have already created one you want to use.)
+* Fill out the prompts, making sure to note your username and password if you want to edit your SQL database later on.
+* Click on your newly created database then "Next". Fill out the required data for the connection string and copy the connection string. Click Finish.
+* Finally, click "Publish" and check the url for where the final product is. 
+For http to https redirection (for use of the SQL database), under "Development Tools," click "Extensions" and add HTTPS Redirect.
+In appsettings.json, there is a section for a connection string "ContextDB," that you can also add your connection string. 
+All future edits of the website code can be published in a similar manner from Visual Studios. 
 
 
